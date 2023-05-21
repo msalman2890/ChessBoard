@@ -1,253 +1,77 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(BootcampApp());
+  runApp(const MyApp());
 }
 
-class BootcampApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Bootcamp App",
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: HomeScreen(),
+      title: 'Chess Board',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ChessboardScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class ChessboardScreen extends StatelessWidget {
+  ChessboardScreen({Key? key}) : super(key: key);
+
+  int rows = 8;
+
+  Map iconPlacement = {
+    0: ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+    1: ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+    6: ['♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟'],
+    7: ['♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'],
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Chess Board",
-          style: TextStyle(
-            fontSize: 30,
-          ),
-        ),
-        backgroundColor: Colors.grey[800],
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.grey[400],
-      body: Container(
-        child: Column(
+        backgroundColor: Colors.grey,
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-              ],
+          children: List.generate(
+            rows,
+                (index) => boxesRow(index % 2 == 0 ? false : true,
+                symbols: iconPlacement[index]),
+          ),
+        ));
+  }
+
+  Widget smallBox(Color color, {String symbol = ''}) {
+    return Container(
+        width: 50,
+        height: 50,
+        color: color,
+        child: Center(
+          child: Text(
+            symbol,
+            style: const TextStyle(
+              color: Colors.amber,
+              fontSize: 40,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  height: 30,
-                  width: 30,
-                  color: Colors.black,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.black,
-                ),
-                Container(
-                  width: 30,
-                  height: 30,
-                  color: Colors.white,
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
+          ),
+        ));
+  }
+
+  Widget boxesRow(bool isEven, {List<String>? symbols}) {
+    List<Widget> boxes = List.generate(
+      8,
+          (index) => smallBox((index + 1) % 2 == 0 ? Colors.white : Colors.black,
+          symbol: symbols == null ? "" : symbols[index]),
+    );
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: isEven ? boxes.reversed.toList() : boxes,
     );
   }
 }

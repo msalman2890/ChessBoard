@@ -1,4 +1,4 @@
-package com.salmanshaikh.chessboard
+package com.example.chessboard
 
 import io.flutter.embedding.android.FlutterActivity
 
